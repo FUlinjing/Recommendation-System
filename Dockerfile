@@ -33,6 +33,6 @@ RUN bash -c 'echo -e "[general]\nemail = \"\"\n" > /.streamlit/credentials.toml'
 RUN bash -c 'echo -e "[server]\nenableCORS = false\nenableXsrfProtection = false\nenableWebsocketCompression = false\n" > /.streamlit/config.toml'
 
 
-ENTRYPOINT ["streamlit", "run"]
+#ENTRYPOINT ["streamlit", ""]
 
-CMD ["app.py"]
+CMD ["streamlit","run","app.py"]
