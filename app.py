@@ -26,13 +26,22 @@ st.header ('output')
 latent_matrix_1_mvp=pd.read_csv('latent_matrix_small.csv', index_col=0)
 
 
+def movieExists(movie_name,df):
+    if movie_name in df.index:
+        return True
+    else:
+        return False
+
 def find_similar_movie(movie_name):
+    if movieExists(movie_name,latent_matrix_1_mvp):
         a_1 = np.array(latent_matrix_1_mvp.loc[movie_name]).reshape(1, -1)
         score_1 = cosine_similarity(latent_matrix_1_mvp, a_1).reshape(-1)
-        dictDf = {'content': score_1}
+        dictDf = {'content': score_1} 
         similar = pd.DataFrame(dictDf, index = latent_matrix_1_mvp.index)
         similar.sort_values('content', ascending = False, inplace = True)
         return similar[1:].head(5)
+    else:
+        raise ValueError('ERROR: The Movie is not Recognised')
 
 x=find_similar_movie(sequence)
 st.write(x)
