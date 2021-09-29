@@ -28,17 +28,9 @@ ENV LANG=C.UTF-8echo
 RUN mkdir -p /.streamlit
 RUN chmod 777 /.streamlit
 
-RUN bash -c 'echo -e "\
-[general]\n\
-email = \"\"\n\
-" > /.streamlit/credentials.toml'
+RUN bash -c 'echo -e "[general]\nemail = \"\"\n" > /.streamlit/credentials.toml'
 
-RUN bash -c 'echo -e "\
-[server]\n\
-enableCORS = false\n\
-enableXsrfProtection = false\n\
-enableWebsocketCompression = false\n\
-" > /.streamlit/config.toml'
+RUN bash -c 'echo -e "[server]\nenableCORS = false\nenableXsrfProtection = false\nenableWebsocketCompression = false\n" > /.streamlit/config.toml'
 
 
 ENTRYPOINT ["streamlit", "run"]
