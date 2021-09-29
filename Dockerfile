@@ -43,4 +43,4 @@ enableWebsocketCompression = false\n\
 
 ENTRYPOINT ["streamlit", "run"]
 
-CMD ["first_app.py"]
+CMD ["app.py"]
